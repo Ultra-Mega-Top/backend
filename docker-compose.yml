@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  main-api:
+    container_name: main_api
+    image: node:18
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm run start:dev main-api
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo-db:27017/main
+    depends_on:
+      - mongo-db
+
+  mongo-db:
+    container_name: mongo_db
+    image: mongo:6.0.7
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodb_data:
