@@ -20,18 +20,21 @@ export class QuestionnaireService {
 	}
 
 	findAll() {
-		return `This action returns all questionnaire`;
+		return this.mQuestionnaire.find({}, { title: 1 });
 	}
 
-	findOne(id: number) {
-		return `This action returns a #${id} questionnaire`;
+	findOne(_id: string) {
+		return this.mQuestionnaire.findOne({ _id });
 	}
 
-	update(id: number, updateQuestionnaireDto: UpdateQuestionnaireDto) {
-		return `This action updates a #${id} questionnaire`;
+	update(_id: string, updateQuestionnaireDto: UpdateQuestionnaireDto) {
+		return this.mQuestionnaire.updateOne(
+			{ _id },
+			{ $set: updateQuestionnaireDto }
+		);
 	}
 
-	remove(id: number) {
-		return `This action removes a #${id} questionnaire`;
+	remove(_id: string) {
+		return this.mQuestionnaire.deleteOne({ _id });
 	}
 }
