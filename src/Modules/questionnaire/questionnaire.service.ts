@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateQuestionnaireDto } from './dto/create-questionnaire.dto';
 import { UpdateQuestionnaireDto } from './dto/update-questionnaire.dto';
 import { InjectModel } from '@nestjs/mongoose';
+
+import { Model } from 'mongoose';
 import {
 	Questionnaire,
 	QuestionnaireDocument,
-} from 'src/Schemas/Questionnaire';
-import { Model } from 'mongoose';
+} from '../../schemas/questionnaire';
 
 @Injectable()
 export class QuestionnaireService {

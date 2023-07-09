@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { ObjectId } from 'src/Utils/Alias';
+import { ObjectId } from 'src/utils/alias';
 
 @Schema({ collection: 'evaluations', strict: false, timestamps: true })
 export class Evaluation {

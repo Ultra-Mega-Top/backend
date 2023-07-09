@@ -9,9 +9,10 @@ RUN npm install
 COPY ./src ./src
 COPY ./.eslintrc.js ./.eslintrc.js
 COPY ./nest-cli.json ./nest-cli.json
+COPY ./tsconfig.build.json ./tsconfig.build.json
 COPY ./tsconfig.json ./tsconfig.json
 
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start:dev"]
+CMD ["npm", "run", "start:nodemon"]

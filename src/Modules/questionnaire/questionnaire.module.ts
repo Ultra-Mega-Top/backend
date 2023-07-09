@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+
 import { QuestionnaireService } from './questionnaire.service';
 import { QuestionnaireController } from './questionnaire.controller';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Questionnaire, QuestionnaireSchema } from 'src/Schemas/Questionnaire';
+import {
+	Questionnaire,
+	QuestionnaireSchema,
+} from '../../schemas/questionnaire';
 
 @Module({
 	imports: [
@@ -10,7 +14,6 @@ import { Questionnaire, QuestionnaireSchema } from 'src/Schemas/Questionnaire';
 			{ name: Questionnaire.name, schema: QuestionnaireSchema },
 		]),
 	],
-
 	controllers: [QuestionnaireController],
 	providers: [QuestionnaireService],
 })
