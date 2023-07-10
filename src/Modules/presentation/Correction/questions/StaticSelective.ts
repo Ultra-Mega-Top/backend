@@ -13,7 +13,8 @@ export interface iStaticSelective extends iQuestion {
 export class StaticSelective {
 	type = 'static-selective';
 
-	getResult(question: iStaticSelective, responded: iResponded) {
+	getResult(question: iStaticSelective, responded: iResponded | null) {
+		if (!responded) return false;
 		return question.correctId === responded.response;
 	}
 }

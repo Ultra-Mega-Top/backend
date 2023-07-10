@@ -109,10 +109,8 @@ export class PresentationService {
 				const responded = dto.responses.find(
 					({ questionId }) => questionId === question.id
 				);
-				console.log('🗿🍷 ~ dto.responses:', dto.responses);
 
 				const fixer = getQuestionFixer(question.type);
-				console.log('🗿🍷 ~ question, responded:', question, responded);
 				const isHit = fixer.getResult(question, responded);
 
 				if (isHit) acc.hit(index + 1, question.id);

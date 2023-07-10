@@ -9,7 +9,7 @@ export interface iResponded {
 export interface FixerProtocol {
 	type: string;
 
-	getResult: (question: any, responded: iResponded) => boolean;
+	getResult: (question: any, responded: iResponded | null) => boolean;
 }
 
 export const questionsTypes: FixerProtocol[] = [new StaticSelective()];

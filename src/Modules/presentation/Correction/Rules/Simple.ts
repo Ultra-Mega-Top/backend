@@ -1,6 +1,4 @@
 export class SimpleRule {
-	protected pointsPerQuestion = 0;
-
 	result = {
 		rule: 'simple',
 		hits: [],
@@ -8,17 +6,18 @@ export class SimpleRule {
 		points: 0,
 		maxPoints: 0,
 		totalQuestions: 0,
+		pointsPerQuestion: 0,
 	};
 
 	constructor(maxPoints: number, totalQuestions: number) {
 		this.result.maxPoints = maxPoints;
 		this.result.totalQuestions = totalQuestions;
-		this.pointsPerQuestion = maxPoints / totalQuestions;
+		this.result.pointsPerQuestion = maxPoints / totalQuestions;
 	}
 
 	hit(index: number, questionId: string) {
 		this.result.hits.push([index + 1, questionId]);
-		this.result.points += this.pointsPerQuestion;
+		this.result.points += this.result.pointsPerQuestion;
 	}
 
 	mistake(index: number, questionId: string) {
