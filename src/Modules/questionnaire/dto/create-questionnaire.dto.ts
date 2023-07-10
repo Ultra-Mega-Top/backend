@@ -5,8 +5,6 @@ import {
 	IsNotEmpty,
 	IsNumberString,
 	IsString,
-	Max,
-	Min,
 	MinLength,
 	ValidateNested,
 } from 'class-validator';
@@ -33,8 +31,6 @@ export class CreateQuestionnaireDto {
 	title: string;
 
 	@IsNumberString()
-	@Max(100)
-	@Min(0)
 	maxEvaluation: number;
 
 	@IsDefined()

@@ -3,14 +3,11 @@ import { HydratedDocument } from 'mongoose';
 
 @Schema({ collection: 'students', timestamps: true })
 export class Student {
-	@Prop({ required: true })
+	@Prop({ required: true, index: 1 })
 	registry: number;
 
 	@Prop({ required: true })
 	name: string;
-
-	@Prop({ required: true })
-	age: number;
 }
 
 export type StudentDocument = HydratedDocument<Student>;
