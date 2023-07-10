@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEvaluationDto } from './dto/create-evaluation.dto';
-import { UpdateEvaluationDto } from './dto/update-evaluation.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Evaluation, EvaluationDocument } from '../../schemas/evaluation';
+import { Model } from 'mongoose';
+import { GetEvaluations } from './queries/GetEvaluations';
 
 @Injectable()
 export class EvaluationService {
-	create(createEvaluationDto: CreateEvaluationDto) {
-		return 'This action adds a new evaluation56';
-	}
+	constructor(
+		@InjectModel(Evaluation.name)
+		private mEvaluation: Model<EvaluationDocument>
+	) {}
 
-	findAll() {
-		return `This action returns all evaluation`;
+	findAll(questionnaireId: string) {
+		const query = GetEvaluations(questionnaireId);
+		return this.mEvaluation.aggregate(query);
 	}
 
 	findOne(id: number) {
 		return `This action returns a #${id} evaluation`;
-	}
-
-	update(id: number, updateEvaluationDto: UpdateEvaluationDto) {
-		return `This action updates a #${id} evaluation 24`;
 	}
 
 	remove(id: number) {
